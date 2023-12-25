@@ -1,0 +1,96 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family:monospace;
+}
+
+body{
+    width: 50vw;
+    margin: auto;
+}
+
+#heads{
+    /* background: green; */
+    display: flex;
+    padding: 2%;
+    text-align: center;
+}
+
+#heads > span > h4{
+    cursor: pointer;
+}
+
+#logo > h1{
+    cursor: pointer;
+}
+
+
+#quicklinks{
+    display: flex;
+    margin: auto;
+    gap: 2vw;
+}
+
+#body{
+    top: 10vh;
+    position: relative;
+    height: 50vh;
+    text-align: center;
+}
+
+#gamerobby{
+    display: inline;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin: 5px;
+    top: 25%;
+    display: none;
+}   
+
+.gameName{
+    cursor: pointer;
+    color: gray;
+}
+
+p{
+    padding-bottom:10%;
+}
+
+label{
+    font-size: 120%;
+}
+
+input , select{
+    padding: 1%;
+}
+
+button{
+    padding: 1.5%;
+    position: relative;
+    top: 5%;
+}
+
+#gameongoing{
+    background: red;
+    position: relative;
+    height: 40vh;
+    width: 40vw;
+    margin: auto;
+}
+
+#playernames{
+    display: flex;
+    margin: auto;
+    position: relative;
+}
+
+#board{
+    background: green;
+    position: relative;
+    padding:5%;
+}
+
+#baord > tr > th{
+    border: black solid 1px;
+}

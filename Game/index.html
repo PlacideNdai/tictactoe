@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- heads -->
+    <div id="heads">
+        <span id="logo">
+            <h1>[-]</h1>
+        </span>
+        <span id="quicklinks">
+            <h4>Music</h4>
+            <h4>More Games</h4>
+            <h4>Creator</h4>
+        </span>
+    </div>
+
+    <!-- body and the game -->
+    <div id="body">
+        <!--  before the game starts -->
+        <div id="gamerobby">
+            <h1 class="gameName">Tic Tac Toe</h1>
+            <p>This is a simple projects made just to have some fun over the break. Building this was umm ... <br>Game
+                has started, play and we will talk later.</p>
+            <div id="gameinfo">
+                <label for="username">username: </label>
+                <input type="text" id="username">
+                <select name="challenger" id="challenger">
+                    <option value="bot">BOT</option>
+                    <option value="friend">A FRIEND</option>
+                </select>
+            </div>
+            <button id="playBtn">PLAY</button>
+        </div>
+
+        <!-- after the game started -->
+        <div id="gameongoing">
+            <!-- players name div -->
+            <div id="playernames">
+                <span id="onename"><h4 id="usernameHolder">loading</h4></span>
+                <span id="twoname"><h4 id="playertwo">loading</h4></span>
+            </div>
+            <!-- game board -->
+            <div id="gameboard">
+                <table id="baord">
+                    <tr>
+                        <th id="one">x</th>
+                        <th id="two">x</th>
+                        <th id="three">x</th>
+                    </tr>
+                    <tr>
+                        <th id="four">0</th>
+                        <th id="five">0</th>
+                        <th id="six">0</th>
+                    </tr>
+                    <tr>
+                        <th id="seven">x</th>
+                        <th id="eight">x</th>
+                        <th id="nine">x</th>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- score  -->
+            <div id="scoreDiv">
+                <span id="firstplayer">0</span>
+                <span id="secondplayer">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
