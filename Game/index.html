@@ -17,7 +17,8 @@
         <span id="quicklinks">
             <h4>Music</h4>
             <h4>More Games</h4>
-            <h4>Creator</h4>
+            <h4>creator</h4>
+            <h4>Settings</h4>
         </span>
     </div>
 
@@ -48,31 +49,35 @@
             </div>
             <!-- game board -->
             <div id="gameboard">
-                <table id="baord">
+                <table id="board">  
                     <tr>
-                        <th id="one">x</th>
-                        <th id="two">x</th>
-                        <th id="three">x</th>
+                        <td class="one box"></td>
+                        <td class="two box"></td>
+                        <td class="three box"></td>
                     </tr>
                     <tr>
-                        <th id="four">0</th>
-                        <th id="five">0</th>
-                        <th id="six">0</th>
+                        <td class="four box"></td>
+                        <td class="five box"></td>
+                        <td class="six box"></td>
                     </tr>
                     <tr>
-                        <th id="seven">x</th>
-                        <th id="eight">x</th>
-                        <th id="nine">x</th>
+                        <td class="seven box"></td>
+                        <td class="eight box"></td>
+                        <td class="nine box"></td>
                     </tr>
                 </table>
             </div>
 
             <!-- score  -->
             <div id="scoreDiv">
-                <span id="firstplayer">0</span>
-                <span id="secondplayer">0</span>
+                <span id="firstplayer"> <p class="scorei">0</p> </span>
+                <span id="secondplayer"> <p class="scoreii">0</p></span>
             </div>
         </div>
+    </div>
+    <div id="console">
+        <span><p id="errors">•‿•</p></span>
+        <span class="consoletab"><p id="consoletext">alright! </p></span>
     </div>
 
     <script src="app.js"></script>
