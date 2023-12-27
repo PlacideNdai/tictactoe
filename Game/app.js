@@ -11,12 +11,15 @@ const whosecondplayer = document.getElementById('challenger');
 let errorsShow = document.getElementById("errors");
 let consoletext = document.getElementById('consoletext');
 let playertwo = document.getElementById('playertwo');
+let playtheme = new Audio('./resources/play.wav');
+let one = "", two = "", three = "", four = "", five = "", six = "", seven = "", eight = "";
 
 // the usernames
 let username = "";
 let secondPlayer = "";
 let keys = "";
 let counter = 0;
+let possibleWinnings;
 
 // starting the game
 function GameStart() {
@@ -42,33 +45,8 @@ function GameStart() {
 
 }
 
-// playing with a player
-let winningPositions = [
-    [1, 2, 3], [4, 5, 6], [7, 8, 9],
-    [1, 4, 7], [2, 5, 8], [3, 6, 9],
-    [1, 5, 9], [3, 5, 7]
-];
 
-let userWinnerInputedCheck = [
-    [valueGetter(0),valueGetter(1),valueGetter(2)],
-    [valueGetter(3),valueGetter(4),valueGetter(5)],
-    [valueGetter(6),valueGetter(7),valueGetter(8)],
-
-    [valueGetter(1),valueGetter(1),valueGetter(1)],
-    [valueGetter(1),valueGetter(1),valueGetter(1)],
-    [valueGetter(1),valueGetter(1),valueGetter(1)],
-
-    [valueGetter(1),valueGetter(1),valueGetter(1)],
-    [valueGetter(1),valueGetter(1),valueGetter(1)],
-    [valueGetter(1),valueGetter(1),valueGetter(1)],
-
-
-]
-
-function valueGetter(num) {
-    return tabs[num].innerHTML;
-}
-
+// playing with a bot
 function WithBot() {
     logs('with bot loaded!');
     // with bot script
@@ -87,7 +65,8 @@ playBtn.onclick = () => {
     if (usernameGetter.value !== "") {
         // setting username from input
         username = usernameGetter.value;
-
+        playtheme.play();
+        playtheme.volume = 0.3;
         // starting the game
         GameStart();
     } else {
@@ -99,12 +78,6 @@ playBtn.onclick = () => {
     }
 }
 
-// game ending
-function endTheGame() {
-    if (counter == 9) {
-        GameResults();
-    }
-}
 
 function GameResults() {
 
@@ -127,14 +100,60 @@ function GameBrain() {
                     firstusernameHolder.style.background = " lightgray";
                     playertwo.style.background = "white";
                     Element.innerHTML = "X";
+
                 } else {
                     // the second to go
                     // change colors when their turn
                     firstusernameHolder.style.background = "white";
                     playertwo.style.background = "lightgray";
                     Element.innerHTML = "O";
-
                 }
+                // getting the values to check if win or draw for the game
+                one = tabs[0].innerHTML;
+                two = tabs[1].innerHTML;
+                three = tabs[2].innerHTML;
+                four = tabs[3].innerHTML;
+                five = tabs[4].innerHTML;
+                six = tabs[5].innerHTML;
+                seven = tabs[6].innerHTML;
+                eight = tabs[7].innerHTML;
+                nine = tabs[8].innerHTML;
+
+
+                // one print
+                let OnePrint = one + two + three + four + five + six + seven + eight;
+                // logs(OnePrint);
+
+                // possible winnings
+                possibleWinnings = [
+                    [one, two, three],
+                    [four, five, six],
+                    [seven, eight, nine],
+
+                    [one, four, seven],
+                    [two, five, eight],
+                    [three, six, nine],
+
+                    [one, five, nine],
+                    [three, five, seven]
+                ]
+
+                // logs(possibleWinnings[1, 2, 3]);
+                let nowinner = true;
+                for (let i = 0; i < possibleWinnings.length; i++) {
+                    if (trueOrFalse(possibleWinnings[i], "X") == true) {
+                        console.log('X wins');
+                        nowinner = false;
+                    } else if (trueOrFalse(possibleWinnings[i], "O") == true) {
+                        console.log("O wins")
+                        nowinner = false;
+                    } else if (counter == 9 && nowinner == true) {
+                        logs("It's a draw");
+                    }
+                }
+
+                // logs(trueOrFalse(possibleWinnings[0],"X"));
+
                 // defaults
                 errorsShow.innerHTML = '•‿•';
                 consoletext.innerHTML = "\nUmmm!"
@@ -149,13 +168,22 @@ function GameBrain() {
 
 
             // checking elements innerHTML to check the winnings
-
         }
 
     })
 
 }
 
+// true of a winning row is fullfilled
+function trueOrFalse(checkstatement, latter) {
+    for (let i = 0; i < checkstatement.length; i++) {
+        if (checkstatement[0] == latter && checkstatement[1] == latter && checkstatement[2] == latter) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
 
 // getting second players name
 function returnSecondUser(choice) {
