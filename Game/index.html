@@ -30,12 +30,21 @@
             <p>This is a simple projects made just to have some fun over the break. Building this was umm ... <br>Game
                 has started, play and we will talk later.</p>
             <div id="gameinfo">
+                <!-- username taking -->
                 <label for="username">username: </label>
-                <input type="text" id="username">
+                <input type="text" id="username"><br>
+
+                <!-- how many rounds -->
+                <label for="rounds">Round(s)</label>
+                <input type="number" id="rounds"> <br>
+
+                <!-- with who -->
+                <label for="challenger">With</label>
                 <select name="challenger" id="challenger">
                     <option value="bot">BOT</option>
                     <option value="friend">A FRIEND</option>
-                </select>
+                </select> 
+
             </div>
             <button id="playBtn">PLAY</button>
         </div>
@@ -78,6 +87,14 @@
     <div id="console">
         <span><p id="errors">•‿•</p></span>
         <span class="consoletab"><p id="consoletext">alright! </p></span>
+    </div>
+
+    <div id="finishedCard">
+        <h1 id="winname"> [name] Won</h1> <br>
+        <p id="winstat">Round(s) of [number], <br> [name] won by [number] out of [number] <br> Good Game!</p>
+        
+        <button id="homebtn">Home</button>
+        <button id="playagainbtn">PLAY AGAIN</button>
     </div>
 
     <script src="app.js"></script>

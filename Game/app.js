@@ -12,14 +12,29 @@ let errorsShow = document.getElementById("errors");
 let consoletext = document.getElementById('consoletext');
 let playertwo = document.getElementById('playertwo');
 let playtheme = new Audio('./resources/play.wav');
+let rounds = document.getElementById('rounds');
+let finishCard = document.getElementById('finishedCard');
+const playagainbtn = document.getElementById('playagainbtn');
+const homebtn = document.getElementById('homebtn');
+let winnernameholder = document.getElementById('winname');
+let winstatholder = document.getElementById('winstat');
+let scorei = document.querySelector('.scorei');
+let scoreii = document.querySelector('.scoreii');
+let winnersName = "";
 let one = "", two = "", three = "", four = "", five = "", six = "", seven = "", eight = "";
 
 // the usernames
 let username = "";
 let secondPlayer = "";
+let firstplayerScore = 0;
+let secondplayerScore = 0;
 let keys = "";
 let counter = 0;
 let possibleWinnings;
+let currentRouds = 1;
+
+
+
 
 // starting the game
 function GameStart() {
@@ -78,8 +93,16 @@ playBtn.onclick = () => {
     }
 }
 
+// when playing again 
+playagainbtn.onclick = () => {
+    counter = 0;
+    currentRouds = 1;
+    GameStart();
+}
 
-function GameResults() {
+// home button clicked!
+homebtn.onclick = () => {
+    window.location.reload();
 
 }
 
@@ -142,17 +165,36 @@ function GameBrain() {
                 let nowinner = true;
                 for (let i = 0; i < possibleWinnings.length; i++) {
                     if (trueOrFalse(possibleWinnings[i], "X") == true) {
-                        console.log('X wins');
+                        // when X wins
+
+                        // score keeping
+                        firstplayerScore++;
+                        scoreii.innerHTML = firstplayerScore;
+                        winnersName = username;
+
+                        awinordraw();
+                        logs('X won');
+                        currentRouds++;
                         nowinner = false;
                     } else if (trueOrFalse(possibleWinnings[i], "O") == true) {
-                        console.log("O wins")
+                        // score keeping
+                        secondplayerScore++;
+                        scorei.innerHTML = secondplayerScore;
+                        winnersName = secondPlayer;
+
+                        // when O wins
+                        awinordraw();
+                        logs('O won')
                         nowinner = false;
+                        currentRouds++;
                     } else if (counter == 9 && nowinner == true) {
                         logs("It's a draw");
+                        awinordraw();
+                        currentRouds++;
                     }
+                    logs('current round: ' + currentRouds);
                 }
 
-                // logs(trueOrFalse(possibleWinnings[0],"X"));
 
                 // defaults
                 errorsShow.innerHTML = '•‿•';
@@ -165,13 +207,33 @@ function GameBrain() {
                 consoletext.style.color = "red";
                 errorsShow.style.background = "rgb(220, 67, 67)";
             }
-
-
-            // checking elements innerHTML to check the winnings
         }
-
     })
+}
 
+let toThisRound = 0;
+function awinordraw() {
+    //reset counter
+    counter = 0;
+    nowinner = true;
+    // clearning the board after a win
+    for (let n = 0; n < tabs.length; n++) {
+        tabs[n].innerHTML = "";
+    }
+
+    if (rounds.value == "") {
+        toThisRound = 3;
+    } else {
+        toThisRound = rounds.value;
+    }
+
+    if (currentRouds == toThisRound) {
+        // final results
+        logs('game ended');
+        resultsShow();
+        winnernameholder.innerHTML = winnersName + " WON!";
+
+    }
 }
 
 // true of a winning row is fullfilled
@@ -196,6 +258,25 @@ function returnSecondUser(choice) {
     }
 
     return keys;
+}
+
+// when showing the results
+function resultsShow() {
+    robby.style.display = "none";
+    inGameBoard.style.display = "none";
+    finishCard.style.display = "inline";
+
+    // scores up
+    winstatholder.innerHTML = `Rounds of ${toThisRound}, <br> ${winnersName} won by ${whoHasMoreWins(firstplayerScore, secondplayerScore)} out of ${whoHasLessWins(firstplayerScore, secondplayerScore)}`;
+}
+
+
+function whoHasMoreWins(one, two) {
+    return Math.max(one, two);
+}
+
+function whoHasLessWins(one, two) {
+    return Math.min(one, two);
 }
 
 
