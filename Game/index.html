@@ -43,7 +43,7 @@
                 <select name="challenger" id="challenger">
                     <option value="bot">BOT</option>
                     <option value="friend">A FRIEND</option>
-                </select> 
+                </select>
 
             </div>
             <button id="playBtn">PLAY</button>
@@ -53,12 +53,16 @@
         <div id="gameongoing">
             <!-- players name div -->
             <div id="playernames">
-                <span id="onename"><h4 id="usernameHolder">loading</h4></span>
-                <span id="twoname"><h4 id="playertwo">loading</h4></span>
+                <span id="onename">
+                    <h4 id="usernameHolder">loading</h4>
+                </span>
+                <span id="twoname">
+                    <h4 id="playertwo">loading</h4>
+                </span>
             </div>
             <!-- game board -->
             <div id="gameboard">
-                <table id="board">  
+                <table id="board">
                     <tr>
                         <td class="one box"></td>
                         <td class="two box"></td>
@@ -79,20 +83,28 @@
 
             <!-- score  -->
             <div id="scoreDiv">
-                <span id="firstplayer"> <p class="scorei">0</p> </span>
-                <span id="secondplayer"> <p class="scoreii">0</p></span>
+                <span id="firstplayer">
+                    <p class="scorei">0</p>
+                </span>
+                <span id="secondplayer">
+                    <p class="scoreii">0</p>
+                </span>
             </div>
         </div>
     </div>
     <div id="console">
-        <span><p id="errors">•‿•</p></span>
-        <span class="consoletab"><p id="consoletext">alright! </p></span>
+        <span>
+            <p id="errors">•‿•</p>
+        </span>
+        <span class="consoletab">
+            <p id="consoletext">alright! </p>
+        </span>
     </div>
 
     <div id="finishedCard">
         <h1 id="winname"> [name] Won</h1> <br>
         <p id="winstat">Round(s) of [number], <br> [name] won by [number] out of [number] <br> Good Game!</p>
-        
+
         <button id="homebtn">Home</button>
         <button id="playagainbtn">PLAY AGAIN</button>
     </div>
