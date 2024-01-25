@@ -11,7 +11,6 @@ const whosecondplayer = document.getElementById('challenger');
 let errorsShow = document.getElementById("errors");
 let consoletext = document.getElementById('consoletext');
 let playertwo = document.getElementById('playertwo');
-let playtheme = new Audio('./resources/play.wav');
 let rounds = document.getElementById('rounds');
 let finishCard = document.getElementById('finishedCard');
 const playagainbtn = document.getElementById('playagainbtn');
@@ -19,6 +18,7 @@ const homebtn = document.getElementById('homebtn');
 let winnernameholder = document.getElementById('winname');
 let winstatholder = document.getElementById('winstat');
 let scorei = document.querySelector('.scorei');
+let allelements = document.getElementsByTagName('body');
 let scoreii = document.querySelector('.scoreii');
 let winnersName = "";
 let one = "", two = "", three = "", four = "", five = "", six = "", seven = "", eight = "";
@@ -32,7 +32,6 @@ let keys = "";
 let counter = 0;
 let possibleWinnings;
 let currentRouds = 1;
-
 
 // starting the game
 function GameStart() {
@@ -79,8 +78,6 @@ playBtn.onclick = () => {
     if (usernameGetter.value !== "") {
         // setting username from input
         username = usernameGetter.value;
-        playtheme.play();
-        playtheme.volume = 0.3;
         // starting the game
         GameStart();
     } else {
@@ -139,8 +136,6 @@ function takenKeeperCleaner() {
     }
 }
 
-
-logs(tabs);
 // playing with a bot mode
 function BotGameMode() {
     tabs.forEach(ElementBot => {
